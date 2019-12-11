@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="jumbotron.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="indexloggedin.html">SmartOffice</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            INFORMATION
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a class="dropdown-item" href="eeecourse.html">EEE Course</a>
+            <a class="dropdown-item" href="#">Area Lead</a>
+            <a class="dropdown-item" href="#">Examination</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="notification.html">NOTIFICATION</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="form.html">FORM</a>
+        </li>
+      </ul>
+
+      <li class="nav-item dropdown">
+        <button type="button" class="btn btn-outline-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi! Chenyu</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="dashboard.php">Admin</a>
+          <a class="dropdown-item" href="setting.html">Setting</a>
+          <a class="dropdown-item" href="index.html">Log Out</a>
+        </div>
+      </li>
+
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Admin Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admincourse.html">
+                  <span data-feather="file"></span>
+                  EEE Course
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="adminarealead.html">
+                  <span data-feather="shopping-cart"></span>
+                  Area Lead
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="adminexam.html">
+                  <span data-feather="shopping-cart"></span>
+                  Examination
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="adminassistant.html">
+                  <span data-feather="shopping-cart"></span>
+                  Admin Assistant
+                </a>
+              </li>
+
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>exam form template</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Social engagement
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Year-end sale
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <!-- Main jumbotron for a primary marketing message or call to action -->
+          <div class="jumbotron">
+            <div class="container">
+              <h1 class="display-3">EEE Course</h1>
+
+              <form class="form-inline">
+                <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="search course by keyword">
+                <button type="submit" class="btn btn-success mb-2">Search</button>
+              </form>
+
+            </div>
+          </div>
+
+          <div class="container">
+            <!-- Example row of columns -->
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Course Code</th>
+                <th scope="col">Course Title</th>
+
+                <th scope="col">
+                  <div class="btn-group dropup">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Area
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="eeecourse.html">ECAL</a>
+                      <a class="dropdown-item" href="eeecourse.html">ENIC</a>
+                      <a class="dropdown-item" href="eeecourse.html">INON</a>
+                      <a class="dropdown-item" href="eeecourse.html">HRH</a>
+                      <a class="dropdown-item" href="eeecourse.html">Others</a>
+                    </div>
+                  </div>
+                </th>
+
+                <th scope="col">
+                  <div class="btn-group dropup">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Offered
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="eeecourse.html">Yes</a>
+                      <a class="dropdown-item" href="eeecourse.html">No</a>
+                    </div>
+                  </div>
+                </th>
+
+                <th scope="col">
+                  <div class="btn-group dropup">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Exam
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="eeecourse.html">Yes</a>
+                      <a class="dropdown-item" href="eeecourse.html">No</a>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>EE0001</td>
+                <td>IMPACT OF ELECTROMAGNETIC RADIATION ON HUMANS</td>
+                <td>INON</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>EE0040 / IM0040</td>
+                <td>ENGINEERS AND SOCIETY</td>
+                <td>Others</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>EE1002</td>
+                <td>PHYSICS FOUNDATION FOR ELECTRICAL AND ELECTRONIC ENGINEERING</td>
+                <td>ENIC</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div> <!-- /container -->
+
+        </main>
+
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          datasets: [{
+            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FORM</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="indexloggedin.html">SmartOffice</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        <ul class="navbar-nav mr-auto">
+          <!--<li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>-->
+          <!--<li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+          </li>-->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">INFORMATION</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <a class="dropdown-item" href="eeecourse.html">EEE Course</a>
+              <a class="dropdown-item" href="#">Area Lead</a>
+              <a class="dropdown-item" href="#">Examination</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">NOTIFICATION</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="form.html">FORM</a>
+          </li>
+        </ul>
+
+        <li class="nav-item dropdown">
+          <button type="button" class="btn btn-outline-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi! Chenyu</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="dashboard.html">Admin</a>
+            <a class="dropdown-item" href="setting.html">Setting</a>
+            <a class="dropdown-item" href="index.html">Log Out</a>
+          </div>
+        </li>
+
+    </nav>
+
+
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">FORM</h1>
+          <P>You may download the following four PDF forms for examination administration matters by just one click:<br>1. Tracking Form<br>2. Process Flow Record-Examination
+            <br>3. Checklist for Setting Review<br>4. Final Form to OAS<br>Meanwhile you can also track the status of the forms on this platform.
+
+          <form class="form-inline">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="search course by keyword">
+            <button type="submit" class="btn btn-success mb-2">Search</button>
+          </form>
+
+          <p></p>
+          <!--<p><a class="btn btn-outline-success btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+        </div>
+      </div>
+
+      <div class="tablenotification">
+        <form action="/action.php">
+          <div align="right">
+            <a class="btn btn-outline-dark mb-2" href="#">Template Form</a>
+            <button type="submit" class="btn btn-success mb-2">Download Selected Forms</button>
+          </div>
+        <!-- Example row of columns -->
+        <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">SN</th>
+            <th scope="col">
+            <div class="btn-group dropup">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Area
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="eeecourse.html">ECAL</a>
+                <a class="dropdown-item" href="eeecourse.html">ENIC</a>
+                <a class="dropdown-item" href="eeecourse.html">INON</a>
+                <a class="dropdown-item" href="eeecourse.html">HRH</a>
+                <a class="dropdown-item" href="eeecourse.html">Others</a>
+              </div>
+            </div>
+            </th>
+
+            <th scope="col">Course</th>
+            <th scope="col">Admin Assistant</th>
+
+            <th scope="col">
+              <div class="btn-group dropup">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Status
+                </a>
+
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="form.html">Status 1</a>
+                  <a class="dropdown-item" href="form.html">Status 2</a>
+                  <a class="dropdown-item" href="form.html">Status 3</a>
+                  <a class="dropdown-item" href="form.html">Status 4</a>
+                  <a class="dropdown-item" href="form.html">Status 5</a>
+                  <a class="dropdown-item" href="form.html">Status 6</a>
+                </div>
+              </div>
+            </th>
+
+            <th scope="col">
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" onClick="toggle(this)" id="blankCheckbox" value="option1" aria-label="...">
+              </div>
+            </th>
+
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>ECAL</td>
+            <td>EE2001-Circuit Analysis</td>
+            <td>Shiu Fern</td>
+            <td>Status 2</td>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" name="sendemail" id="blankCheckbox" value="option1" aria-label="...">
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">2</th>
+            <td>ECAL</td>
+            <td>EE2006/IM2006-Engineering Mathematics I</td>
+            <td>Shiu Fern</td>
+            <td>Status 3</td>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" name="sendemail" id="blankCheckbox" value="option1" aria-label="...">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>ECAL</td>
+            <td>EE2007/IM2007-Engineering Mathematics II</td>
+            <td>Shiu Fern</td>
+            <td>Status 1</td>
+            <td>
+              <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" name="sendemail" id="blankCheckbox" value="option1" aria-label="...">
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+        </form>
+        </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; SHI CHENYU FINAL YEAR PROJECT 2018-2019</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script language="JavaScript">
+        function toggle(source) {
+            checkboxes = document.getElementsByName('sendemail');
+            for(var i=0, n=checkboxes.length;i<n;i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+    </script>
+
+  </body>
+</html>

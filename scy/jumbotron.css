@@ -1,0 +1,22 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 3.5rem;
+}
+
+.tablenotification{
+  margin: auto;
+  width: 90%;
+}
+
+.signupfield{
+  margin:auto;
+  width:40%
+}
+
+footer{
+  margin: 0;
+  float:bottom;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+}
