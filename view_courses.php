@@ -140,13 +140,12 @@ _END;
                     </tbody>
                 </table>
             </div>
+
     </div> <!-- /container -->
 
 </main>
 
-<footer class="card-footer">
-    <p>&copy; DING JIAWEN FINAL YEAR PROJECT 2019-2020</p>
-</footer>
+<?php include 'footer.php' ?>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

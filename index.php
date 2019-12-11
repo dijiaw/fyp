@@ -43,9 +43,7 @@
 
 </main>
 
-<footer class="container">
-    <p>&copy; SHI CHENYU FINAL YEAR PROJECT 2018-2019</p>
-</footer>
+<?php include 'footer.php' ?>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
