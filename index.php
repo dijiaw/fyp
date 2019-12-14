@@ -18,7 +18,7 @@
 
 <body>
 
-<?php include 'topnav.php'; ?>
+<?php include 'topnav.php'?>
 
 <main role="main">
 

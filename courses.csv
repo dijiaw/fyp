@@ -1,0 +1,8 @@
+course_id,area,code,coursename,exam,offered(Y/N),undergraduate/postgraduate,type,school,au,tel(Y/N),year,hours_per_staff,number_of_groups,number_of_weeks,hours_per_week
+1,INON,EE0001,"IMPACT OF ELECTROMAGNETIC RADIATION ON HUMANS",no,yes,UG,LEC,EEE,3,yes,2,13,5,13,3
+2,Others,"EE0040 / IM0040","ENGINEERS AND SOCIETY",yes,yes,UG,LEC,EEE,3,yes,2,13,5,13,3
+3,ENIC,EE1002,"PHYSICS FOUNDATION FOR ELECTRICAL AND ELECTRONIC ENGINEERING",yes,yes,UG,LEC,EEE,3,yes,2,13,5,13,3
+4,ENIC,EE1003,"INTRODUCTION TO MATERIALS FOR ELECTRONICS",yes,yes,UG,LEC,EEE,3,yes,2,13,5,13,3
+5,ECAL,EE2001,"CIRCUIT ANALYSIS",yes,yes,UG,LEC,EEE,3,yes,2,13,5,13,3
+6,ECAL,EE2001,"CIRCUIT ANALYSIS",yes,yes,UG,LAB,EEE,3,yes,2,13,5,13,3
+7,ECAL,EE2001,"CIRCUIT ANALYSIS",yes,yes,UG,TUT,EEE,3,yes,2,13,5,13,3

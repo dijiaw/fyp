@@ -59,7 +59,6 @@ else{
     </div>
 
     <div class="tablenotification">
-
             <!-- Example row of columns -->
             <div class="table-responsive">
                 <table class="table table-hover" style="margin-left: 5%; width: 90%;">

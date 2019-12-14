@@ -22,17 +22,11 @@ if (isset($_GET['logout'])) logout();
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item mr-4">
-                <a class="nav-link" href="my_courses.php">View My Courses</a></li>
+                <a class="nav-link" href="view_courses.php">View My Courses</a></li>
             <li class="nav-item mr-4">
                 <a class="nav-link" href="preference.php">Teaching Preference Survey</a></li>
-            <li class="nav-item mr-4">
+            <li class="nav-item">
                 <a class="nav-link" href="manage_account.php">My Account</a></li>
-            <?php
-                if ($_SESSION["role"]=='admin' or $_SESSION["role"]=='area') {
-                    echo "<li class='nav-item mr-4'>";
-                    echo "<a class='nav-link' href='all_courses.php'>View All Courses</a></li>";
-                }
-            ?>
         </ul>
 
         <li class="nav-item dropdown">

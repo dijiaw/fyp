@@ -193,9 +193,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`userid`, `firstname`, `lastname`, `email`, `password`, `role`, `areaid`, `staffid`) VALUES
-(1, 'admin', 'admin', 'admin@admin', md5(111111), 'admin', NULL, 1),
-(2, 'normal', 'faculty', 'normal@normal', md5(111111), 'normal', NULL, 2),
-(3, 'area', 'lead', 'area@area', md5(111111), 'area', 3, 3);
+(1, 'admin', 'admin', 'admin@admin', '111111', 'admin', NULL, 1),
+(2, 'normal', 'faculty', 'normal@normal', '111111', 'normal', NULL, 2),
+(3, 'area', 'lead', 'area@area', '111111', 'area', 3, 3);
 
 
 -- --------------------------------------------------------
@@ -236,7 +236,7 @@ CREATE TABLE `plan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `plan`
+-- Dumping data for table `staff`
 --
 
 INSERT INTO `plan` (`planid`, `year`, `courseid`, `staffid`) VALUES
@@ -245,21 +245,6 @@ INSERT INTO `plan` (`planid`, `year`, `courseid`, `staffid`) VALUES
 (3, 2019, 3, 2),
 (4, 2019, 4, 2),
 (5, 2019, 5, 3);
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `preference`
---
-
-CREATE TABLE `preference` (
-  `preferenceid` int(11) NOT NULL,
-  `staffid` int(11) DEFAULT NULL,
-  `first` varchar(20) NOT NULL,
-  `second` varchar(20) NOT NULL,
-  `third` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 --
@@ -303,14 +288,6 @@ ALTER TABLE `plan`
   
   
 --
--- Indexes for table `plan`
---
-ALTER TABLE `preference`
-  ADD PRIMARY KEY (`preferenceid`),
-  ADD KEY `staffid` (`staffid`);
-  
-
---
 -- AUTO_INCREMENT for table `area`
 --
 ALTER TABLE `area`
@@ -339,12 +316,6 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `plan`
   MODIFY `planid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `preference`
---
-ALTER TABLE `preference`
-  MODIFY `preferenceid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 
 -- Constraints for dumped tables

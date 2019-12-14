@@ -10,7 +10,15 @@ if(!isset($_SESSION["loggedin"]) || !$_SESSION["loggedin"] === true){
 else{
     require_once ("config.php");
     //Fetch data from database
-    $sql="select * from course;";
+    if (isset($_GET['search'])){
+        $sql="select * from course where (code like '%".$_GET['search']."%' or coursename like '%".$_GET['search']."%')";
+    }
+    else if (isset($_GET['area'])){
+        $sql="select * from course where area='".$_GET['area']."';";
+    }
+    else{
+        $sql="select * from course;";
+    }
     $res=mysqli_query($link,$sql);
 }
 ?>
@@ -30,7 +38,6 @@ else{
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
-    
 
 </head>
 
@@ -48,16 +55,15 @@ else{
             for your consideration.<br>You may narrow down your consideration by searching a course code or course 
             in the search box or by specifying your preferred area (ECAL or ENIC or INON or HRH or OTHERS).</p>
 
-            <form class="form-inline" action="preference.php">
+            <form class="form-inline" action="form_generation.php">
                 <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="search course" name="search">
                 <button type="submit" class="btn btn-success mb-2">Search</button>
             </form>
         </div>
     </div>
 
-    <div class="table-responsive" style="width: 90%; margin-left: 5%;">
-    <div class="tablenotification" >
-        <!-- <form action="preference.php" method="post"> -->
+    <div class="tablenotification">
+        <form action="trackingform.php" method="post">
             <?php
             // if ($_SESSION["role"]=='admin' or $_SESSION["role"]=='area')
             //     echo "<div align=\"right\">
@@ -76,22 +82,18 @@ else{
             ?>
             <!-- Example row of columns -->
             <div class="table-responsive">
-                <!-- <form class="form-inline" action="preference.php" method="post"> -->
-                    <?php
-                    if ($_SESSION["role"]=='admin' or $_SESSION["role"]=='area') {
-                        echo "<table class='table table-hover'>";
-                        echo "<h4>You are logged in as admin. Click the button to download survey result.</h4>";
-                        echo "<a href='download_survey.php' class='btn btn-success pull-right' style='float:right;'>Download</a>";
-                        echo "</table><br><br>";
-                    }
-                    ?>
+                <form class="form-inline" action="preference.php">
                     <table class="table table-hover">
                         <h4>Please Indicate Your Preferences</h4>
-                        <?php
-                            echo "<input type='hidden' id='valid' value='0' name='valid'";
-                        ?>
+                        <thead>
                         <tr>
-                            <td scope="col"><strong>First Choice</strong><select style="margin-left: 20px;" id="first" >
+                            <th scope="col">First Choice</th>
+                            <th scope="col">Second Choice</th>
+                            <th scope="col">Third Choice</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td><select>
                             <?php
                             $prev = "";
                             foreach($codes as $code) {
@@ -102,7 +104,7 @@ else{
                             }
                             ?>
                             </select></td>
-                            <td scope="col"><strong>Second Choice</strong><select style="margin-left: 20px;" id="second">
+                            <td><select>
                             <?php
                             $prev = "";
                             foreach($codes as $code) {
@@ -113,7 +115,7 @@ else{
                             }
                             ?>
                             </select></td>
-                            <td scope="col"><strong>Third Choice</strong><select style="margin-left: 20px;" id="third">
+                            <td><select>
                             <?php
                             $prev = "";
                             foreach($codes as $code) {
@@ -124,42 +126,10 @@ else{
                             }
                             ?>
                             </select></td>
-                            <td>
-                            <!-- <form class="form-inline" action="preference_submission.php"> -->
-                        
-                            <button type="submit" class="btn btn-success mb-2" name="preference" onclick=preference()>Submit</button>
-                            <script type = "text/javascript" src = "validator.js"></script>
-                            <?php
-                                $staffid = $_SESSION["staffid"];
-                                if ($_GET['valid'] == true) {
-                                    $query = "select * from preference where staffid = ".$staffid."";
-                                    $result = mysqli_query($link, $query);
-                                    $first = $_GET['first'];
-                                    $second = $_GET['second'];
-                                    $third = $_GET['third'];
-                                    if ($result->num_rows > 0) {        
-                                        $query2 = "update preference set first = \"".$first."\", second = \"".$second."\", third = \"".$third."\" where staffid = ".$staffid."";
-                                        $result2 = mysqli_query($link, $query2);
-                                        $result2 = mysqli_query($link, $query2);
-                                        $result2->free_result();
-                                    }
-                                    else {
-                                        $query2 = "insert into preference (staffid, first, second, third) 
-                                        values (\"".$staffid."\",\"".$first."\",\"".$second."\",\"".$third."\")";
-                                        echo $query2;
-                                        $result2 = mysqli_query($link, $query2);
-                                        $result2->free_result();
-                                    }
-                                    $result->free_result();
-                                }
-                            ?>
-                            <!-- </form> -->
-                            </td>
                         </tr>
                     </table>
-                <!-- </form> -->
+                </form>
             </div>
-            <br><br>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <h4>Courses Available</h4>
@@ -181,51 +151,111 @@ else{
 
                         <th scope="col">Course Code</th>
                         <th scope="col" style="width:35%;">Course</th>
+                        <th scope="col">Area</th>
                         <th scope="col">Exam</th>
                         <th scope="col">AU</th>
                         <th scope="col">TEL</th>
                         <th scope="col">Hours</th>
 
+                        <?php
+                        if ($_SESSION["role"]=='admin')
+                            echo "<th scope=\"col\">
+                            <div class=\"form-check\">
+                                <input class=\"form-check-input position-static\" type=\"checkbox\" onClick=\"toggle(this)\" id=\"blankCheckbox\">
+                            </div>
+                        </th>";
+                        ?>
                     </tr>
                     </thead>
 
                     <tbody>
-                        
+
                     <?php
                     // The query() returns a buffered resultset, with number of rows in num_rows.
-                    if (isset($_GET['search'])){
-                        $sql="select * from course where (code like '%".$_GET['search']."%' or coursename like '%".$_GET['search']."%')";
-                    }
-                    else if (isset($_GET['area'])){
-                        $sql="select * from course where area='".$_GET['area']."';";
-                    }
-                    else{
-                        $sql="select * from course;";
-                    }
-                    $res=mysqli_query($link,$sql);
                     for ($r = 0; $r < $res->num_rows; ++$r) {
                         // Fetch current row into an associative array called $row
                         $row = $res->fetch_assoc();
-                        echo "<tr><td>{$row['area']}</td>";
-                        echo "<td><a href='OBTL/{$row['code']}_test.pdf'>{$row['code']}</a></td>";
-                        echo "<td>{$row['coursename']}</td>";
-                        echo "<td>{$row['exam']}</td>";
-                        echo "<td>{$row['au']}</td>";
-                        echo "<td>{$row['tel']}</td>";
-                        echo "<td>{$row['hoursperstaff']}</td></tr>";
+                        $sqltracking="select * from tracking where courseid=".$row['courseid'].";";
+                        $restracking=mysqli_query($link,$sqltracking);
+                        $rowtracking = $restracking->fetch_assoc();
+                        $sqladmin="select * from login where userid=".$rowtracking['adminid'].";";
+                        $resadmin=mysqli_query($link,$sqladmin);
+                        $rowadmin = $resadmin->fetch_assoc();
+                        $sqlstatus="select * from status where statusid=".$rowtracking['statusid'].";";
+                        $resstatus=mysqli_query($link,$sqlstatus);
+                        $rowstatus = $resstatus->fetch_assoc();
+
+                        echo <<<_END
+                        <tr>
+                        <td>{$row['area']}</td>
+                        <td>{$row['code']}-{$row['coursename']}</td>
+                        <td>{$rowadmin['lastname']} {$rowadmin['firstname']}</td>
+_END;
+
+                            echo"<td><div class='form-group'><select class='form-control' id=\"updatestatus-{$row['courseid']}\">";
+                            if ($rowstatus['statusid']==1){
+                                echo "<option selected=\"selected\">Drafting</option>";
+                                echo "<option>Area Lead Reviewing</option>";
+                                echo "<option>Acad Review (OAS)</option>";
+                                echo "<option>Acad Review (non OAS)</option>";
+                                echo "<option>Chair Reviewing</option>";
+                            }
+                            else if ($rowstatus['statusid']==2){
+                                echo "<option>Drafting</option>";
+                                echo "<option selected=\"selected\">Area Lead Reviewing</option>";
+                                echo "<option>Acad Review (OAS)</option>";
+                                echo "<option>Acad Review (non OAS)</option>";
+                                echo "<option>Chair Reviewing</option>";
+                            }
+                            else if ($rowstatus['statusid']==3){
+                                echo "<option>Drafting</option>";
+                                echo "<option>Area Lead Reviewing</option>";
+                                echo "<option selected=\"selected\">Acad Review (OAS)</option>";
+                                echo "<option>Acad Review (non OAS)</option>";
+                                echo "<option>Chair Reviewing</option>";
+                            }
+                            else if ($rowstatus['statusid']==4){
+                                echo "<option>Drafting</option>";
+                                echo "<option>Area Lead Reviewing</option>";
+                                echo "<option>Acad Review (OAS)</option>";
+                                echo "<option selected=\"selected\">Acad Review (non OAS)</option>";
+                                echo "<option>Chair Reviewing</option>";
+
+                            }
+                            else{
+                                echo "<option>Drafting</option>";
+                                echo "<option>Area Lead Reviewing</option>";
+                                echo "<option>Acad Review (OAS)</option>";
+                                echo "<option>Acad Review (non OAS)</option>";
+                                echo "<option selected=\"selected\">Chair Reviewing</option>";
+                            }
+                            echo "</select></div></td>";
+
+
+                            echo <<<_END
+                        <td>
+                        <button type="button" class="btn btn-sm btn-success" name="updateadminbtn" style="font-size:90%" value="{$row['courseid']}" onclick="updatestatus(this)">Update</button>
+                        </td>
+_END;
+                        if ($_SESSION["role"]=='admin'){
+                            echo "<td>
+                            <div class=\"form-check\">
+                                <input class=\"form-check-input position-static\" type=\"checkbox\" name=\"formgeneration[]\" id=\"blankCheckbox\" value=\"{$row['courseid']}\">
+                            </div>
+                        </td></tr>";}
+                        else echo"</tr>";
                     }
-//                     $res->free_result();
                     ?>
+
                     </tbody>
                 </table>
             </div>
-        <!-- </form> -->
-        
+        </form>
 
-        <!-- <form action="preference.php" id="hidden-form" method="post">
+        <form action="form_generation.php" id="hidden-form" method="post">
             <input name="updatestatus" type="hidden" id="hidden-form-updatestatus">
             <input name="updateadminbtn" type="hidden" id="hidden-form-updateadminbtn">
-        </form> -->
+        </form>
     </div> <!-- /container -->
 
 </main>

@@ -129,7 +129,7 @@ else{
                                     <td>{$row2['exam']}</td>
                                     <td>{$row2['au']}</td>
                                     <td>{$row2['tel']}</td>
-                                    <td>{$row2['hoursperstaff']}</td></tr>
+                                    <td>{$row2['hoursperstaff']}</td>
 _END;
                             }
                             $res -> free_result();   
@@ -144,6 +144,7 @@ _END;
     </div> <!-- /container -->
 
 </main>
+
 <?php include 'footer.php' ?>
 
 <!-- Bootstrap core JavaScript

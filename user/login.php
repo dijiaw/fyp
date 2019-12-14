@@ -25,7 +25,7 @@ if(isset($_POST['login'])) {
         }
         else {
             $login_email = $_POST['email'];
-            $login_password = md5($_POST['password']);
+            $login_password = $_POST['password'];
             // Validate email
             if (empty($login_email)) {
                 $login_email_err = "Please enter an email.";
