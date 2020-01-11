@@ -22,7 +22,8 @@ else{
         $sqlmodal="update login set password= md5(".$_GET['changepasswordinput'].") where userid=".$_GET['changepassword'].";";
         $resmodal=mysqli_query($link,$sqlmodal);
     }
-    $sql="select * from login where userid<>".$_SESSION["userid"].";";
+    // $sql="select * from login where userid=".$_SESSION["userid"].";";
+    $sql="select * from login";
     $res=mysqli_query($link,$sql);
 }
 ?>
@@ -60,35 +61,23 @@ else{
                    Admin Dashboard<span class="sr-only">(current)</span>
                 </a>
               </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="modify_cem.php">
-                         All Courses
+                <li class="nav-item">
+                    <a class="nav-link" href="add_user.php">
+                         Add New User
                     </a>
-                </li> -->
-
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="modify_course.php">
-                  EEE Courses
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="modify_staff.php">
-                  Faculties
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="modify_arealead.php">
-                  Area Leads
-                </a>
-              </li>
+                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="modify_status.php">
-                        Review Status
-                    </a>
-                </li> -->
+                        <a class="nav-link" href="add_course.php">
+                            Add New Course
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="modify_course.php">
+                            Modify Existing Course
+                        </a>
+                    </li>
 
             </ul>
         </nav>

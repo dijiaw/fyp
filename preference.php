@@ -82,7 +82,7 @@ else{
                         echo "<table class='table table-hover'>";
                         echo "<h4>You are logged in as admin. Click the button to download survey result.</h4>";
                         echo "<a href='download_survey.php' class='btn btn-success pull-right' style='float:right;'>Download</a>";
-                        echo "</table><br><br>";
+                        echo "</table>";
                     }
                     ?>
                     <table class="table table-hover">
@@ -125,7 +125,6 @@ else{
                             ?>
                             </select></td>
                             <td>
-                            <!-- <form class="form-inline" action="preference_submission.php"> -->
                         
                             <button type="submit" class="btn btn-success mb-2" name="preference" onclick=preference()>Submit</button>
                             <script type = "text/javascript" src = "validator.js"></script>
@@ -140,24 +139,20 @@ else{
                                     if ($result->num_rows > 0) {        
                                         $query2 = "update preference set first = \"".$first."\", second = \"".$second."\", third = \"".$third."\" where staffid = ".$staffid."";
                                         $result2 = mysqli_query($link, $query2);
-                                        $result2 = mysqli_query($link, $query2);
                                         $result2->free_result();
                                     }
                                     else {
                                         $query2 = "insert into preference (staffid, first, second, third) 
                                         values (\"".$staffid."\",\"".$first."\",\"".$second."\",\"".$third."\")";
-                                        echo $query2;
                                         $result2 = mysqli_query($link, $query2);
                                         $result2->free_result();
                                     }
                                     $result->free_result();
                                 }
                             ?>
-                            <!-- </form> -->
                             </td>
                         </tr>
                     </table>
-                <!-- </form> -->
             </div>
             <br><br>
             <div class="table-responsive">
@@ -185,12 +180,15 @@ else{
                         <th scope="col">AU</th>
                         <th scope="col">TEL</th>
                         <th scope="col">Hours</th>
+                        <th scope="col">Preferences</th>
 
                     </tr>
                     </thead>
 
                     <tbody>
-                        
+                    <input type='hidden' id='firstchoice' name='firstchoice'>
+                    <input type='hidden' id='secondchoice' name='secondchoice'>
+                    <input type='hidden' id='thirdchoice' name='thirdchoice'>
                     <?php
                     // The query() returns a buffered resultset, with number of rows in num_rows.
                     if (isset($_GET['search'])){
@@ -207,17 +205,39 @@ else{
                         // Fetch current row into an associative array called $row
                         $row = $res->fetch_assoc();
                         echo "<tr><td>{$row['area']}</td>";
-                        echo "<td><a href='OBTL/{$row['code']}_test.pdf'>{$row['code']}</a></td>";
+                        echo "<td><a href='OBTL/{$row['code']}_test.pdf' target='_blank'>{$row['code']}</a></td>";
                         echo "<td>{$row['coursename']}</td>";
                         echo "<td>{$row['exam']}</td>";
                         echo "<td>{$row['au']}</td>";
                         echo "<td>{$row['tel']}</td>";
-                        echo "<td>{$row['hoursperstaff']}</td></tr>";
+                        echo "<td>{$row['hoursperstaff']}</td>";
+                        // echo "<td><select id='coursePref' onchange='select({$row['code']});'>
+                        echo "<td><select id='coursePref' onchange='select(this.value)'>
+                        <option value='{$row['code']}-not'>Please Choose</option>
+                        <option value='{$row['code']}-first'>First Choice</option>
+                        <option value='{$row['code']}-second'>Second Choice</option>
+                        <option value='{$row['code']}-third'>Third Choice</option>
+                        </select></td>";
+                        echo "<script>
+                        var firstEle = document.getElementById('first');
+                        var secondEle = document.getElementById('second');
+                        var thirdEle = document.getElementById('third');
+                        function select(val){   
+                            var code = val.split('-')[0];
+                            var choice = val.split('-')[1];
+                            if (choice == 'first') firstEle.value = code;
+                            else if (choice == 'second') secondEle.value = code;
+                            else if (choice == 'third') thirdEle.value = code;
+                        }
+                        </script>";
                     }
 //                     $res->free_result();
                     ?>
                     </tbody>
+                    
                 </table>
+                <!-- <button type="submit" class="btn btn-success mb-2" name="preference" onclick=preference()>Submit</button> -->
+                
             </div>
         <!-- </form> -->
         
